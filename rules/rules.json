@@ -1,0 +1,125 @@
+{
+ "version": 3,
+ "computed": "2026-10-11",
+ "calendar": {
+  "holidays": [
+   "2026-01-01",
+   "2026-01-19",
+   "2026-02-16",
+   "2026-04-03",
+   "2026-05-25",
+   "2026-06-19",
+   "2026-07-03",
+   "2026-09-07",
+   "2026-11-26",
+   "2026-12-25",
+   "2027-01-01",
+   "2027-01-18",
+   "2027-02-15",
+   "2027-03-26",
+   "2027-05-31",
+   "2027-06-18",
+   "2027-07-05",
+   "2027-09-06",
+   "2027-11-25",
+   "2027-12-24"
+  ],
+  "early_close": {
+   "2026-11-27": "13:00",
+   "2026-12-24": "13:00",
+   "2027-11-26": "13:00"
+  }
+ },
+ "combinations": [
+  {
+   "id": "sp500-5x",
+   "product": {
+    "eur_ticker": "5USL.MI",
+    "tax_regime": "non_reporting_pauschal",
+    "isin": "XS2771643025",
+    "name": "WisdomTree S&P 500 5x Daily Leveraged",
+    "ticker": "US5L.DE",
+    "leverage": 5.0
+   },
+   "signal": {
+    "ticker": "^GSPC",
+    "series": "price"
+   },
+   "rule": "A",
+   "sma": 210,
+   "entry": 0.025,
+   "exit": 0.045,
+   "order": "close",
+   "evidence": {
+    "median": 0.1984,
+    "bad_case": 0.1434,
+    "grid": "fine_base",
+    "starts": 215,
+    "time_in_market": 0.7673,
+    "trades_per_year": 1.7,
+    "max_drawdown": -0.7633,
+    "years_under_water": 7.9
+   }
+  },
+  {
+   "id": "sp500-3x",
+   "product": {
+    "eur_ticker": "3USL.MI",
+    "tax_regime": "non_reporting_pauschal",
+    "isin": "IE00B7Y34M31",
+    "name": "WisdomTree S&P 500 3x Daily Leveraged",
+    "ticker": "3USL.L",
+    "leverage": 3.0
+   },
+   "signal": {
+    "ticker": "^GSPC",
+    "series": "price"
+   },
+   "rule": "A",
+   "sma": 210,
+   "entry": 0.025,
+   "exit": 0.045,
+   "order": "close",
+   "evidence": {
+    "median": 0.1669,
+    "bad_case": 0.1255,
+    "grid": "fine_base",
+    "starts": 215,
+    "time_in_market": 0.7673,
+    "trades_per_year": 1.75,
+    "max_drawdown": -0.5713,
+    "years_under_water": 4.1
+   }
+  },
+  {
+   "id": "nasdaq100-2x-spsignal",
+   "product": {
+    "eur_ticker": "LQQ.PA",
+    "tax_regime": "reporting_fund",
+    "isin": "FR0010342592",
+    "name": "Amundi Nasdaq-100 Daily (2x) Leveraged UCITS ETF Acc",
+    "ticker": "LQQ.PA",
+    "leverage": 2.0
+   },
+   "signal": {
+    "ticker": "^GSPC",
+    "series": "price"
+   },
+   "rule": "A",
+   "sma": 210,
+   "entry": 0.0175,
+   "exit": 0.045,
+   "order": "close",
+   "evidence": {
+    "median": 0.208,
+    "bad_case": 0.1592,
+    "grid": "spsignal_seekA_base",
+    "starts": 215,
+    "time_in_market": 0.774,
+    "trades_per_year": 1.35,
+    "max_drawdown": -0.6968,
+    "years_under_water": 10.0
+   }
+  }
+ ]
+}
