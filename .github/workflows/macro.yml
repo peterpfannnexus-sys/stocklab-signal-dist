@@ -1,0 +1,29 @@
+name: update-macro
+on:
+  schedule:
+    # Mon-Fri 14:30 UTC (15:30 CET, right after US 8:30 AM macro releases)
+    - cron: "30 14 * * 1-5"
+  workflow_dispatch:
+jobs:
+  macro:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch FRED macro indicators
+        run: python scripts/update_macro.py
+      - name: Commit and push if changed
+        run: |
+          if git diff --quiet rules/macro.json; then
+            echo "No macro change."
+            exit 0
+          fi
+          git config user.name "stocklab-macro-bot"
+          git config user.email "ci@users.noreply.github.com"
+          git add rules/macro.json
+          git commit -m "macro: $(date -u +%Y-%m-%d)"
+          git push

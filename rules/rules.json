@@ -1,6 +1,6 @@
 {
- "version": 3,
- "computed": "2026-10-11",
+ "version": 5,
+ "computed": "2026-11-25",
  "calendar": {
   "holidays": [
    "2026-01-01",
@@ -32,36 +32,6 @@
  },
  "combinations": [
   {
-   "id": "sp500-5x",
-   "product": {
-    "eur_ticker": "5USL.MI",
-    "tax_regime": "non_reporting_pauschal",
-    "isin": "XS2771643025",
-    "name": "WisdomTree S&P 500 5x Daily Leveraged",
-    "ticker": "US5L.DE",
-    "leverage": 5.0
-   },
-   "signal": {
-    "ticker": "^GSPC",
-    "series": "price"
-   },
-   "rule": "A",
-   "sma": 210,
-   "entry": 0.025,
-   "exit": 0.045,
-   "order": "close",
-   "evidence": {
-    "median": 0.1984,
-    "bad_case": 0.1434,
-    "grid": "fine_base",
-    "starts": 215,
-    "time_in_market": 0.7673,
-    "trades_per_year": 1.7,
-    "max_drawdown": -0.7633,
-    "years_under_water": 7.9
-   }
-  },
-  {
    "id": "sp500-3x",
    "product": {
     "eur_ticker": "3USL.MI",
@@ -75,21 +45,61 @@
     "ticker": "^GSPC",
     "series": "price"
    },
-   "rule": "A",
+   "rule": "C",
    "sma": 210,
    "entry": 0.025,
    "exit": 0.045,
    "order": "close",
    "evidence": {
-    "median": 0.1669,
-    "bad_case": 0.1255,
-    "grid": "fine_base",
+    "median": 0.175,
+    "bad_case": 0.136,
+    "grid": "HybStay M7 (HOUST<-5%, real)",
     "starts": 215,
-    "time_in_market": 0.7673,
-    "trades_per_year": 1.75,
-    "max_drawdown": -0.5713,
-    "years_under_water": 4.1
-   }
+    "max_drawdown": -0.525
+   },
+   "vol_brake": {
+    "sma": 50,
+    "window": 20,
+    "enter": 0.22,
+    "exit": 0.18,
+    "weight": 0.5
+   },
+   "macro_gate": true
+  },
+  {
+   "id": "usa-2x",
+   "product": {
+    "eur_ticker": "CL2.PA",
+    "tax_regime": "reporting_fund",
+    "isin": "FR0010755611",
+    "name": "Amundi MSCI USA Daily (2x) Leveraged UCITS ETF Acc",
+    "ticker": "CL2.PA",
+    "leverage": 2.0
+   },
+   "signal": {
+    "ticker": "^GSPC",
+    "series": "price"
+   },
+   "rule": "C",
+   "sma": 210,
+   "entry": 0.025,
+   "exit": 0.045,
+   "order": "close",
+   "evidence": {
+    "median": 0.143,
+    "bad_case": 0.115,
+    "grid": "HybStay M7 (HOUST<-5%, real)",
+    "starts": 215,
+    "max_drawdown": -0.381
+   },
+   "vol_brake": {
+    "sma": 50,
+    "window": 20,
+    "enter": 0.22,
+    "exit": 0.18,
+    "weight": 0.5
+   },
+   "macro_gate": true
   },
   {
    "id": "nasdaq100-2x-spsignal",
@@ -105,21 +115,96 @@
     "ticker": "^GSPC",
     "series": "price"
    },
-   "rule": "A",
+   "rule": "C",
    "sma": 210,
-   "entry": 0.0175,
+   "entry": 0.025,
    "exit": 0.045,
    "order": "close",
    "evidence": {
-    "median": 0.208,
-    "bad_case": 0.1592,
-    "grid": "spsignal_seekA_base",
+    "median": 0.23,
+    "bad_case": 0.166,
+    "grid": "HybStay M7 (HOUST<-5%, real)",
     "starts": 215,
-    "time_in_market": 0.774,
-    "trades_per_year": 1.35,
-    "max_drawdown": -0.6968,
-    "years_under_water": 10.0
-   }
+    "max_drawdown": -0.639
+   },
+   "vol_brake": {
+    "sma": 50,
+    "window": 20,
+    "enter": 0.22,
+    "exit": 0.18,
+    "weight": 0.5
+   },
+   "macro_gate": true
+  },
+  {
+   "id": "msci-world-2x",
+   "product": {
+    "eur_ticker": "LWLD.PA",
+    "tax_regime": "reporting_fund",
+    "isin": "FR0014010HV4",
+    "name": "Amundi MSCI World (2x) Leveraged UCITS ETF Acc",
+    "ticker": "LWLD.PA",
+    "leverage": 2.0
+   },
+   "signal": {
+    "ticker": "^990100-USD-STRD",
+    "series": "price"
+   },
+   "rule": "C",
+   "sma": 210,
+   "entry": 0.025,
+   "exit": 0.045,
+   "order": "close",
+   "evidence": {
+    "median": 0.138,
+    "bad_case": 0.107,
+    "grid": "HybStay M7 (MSCI World, real)",
+    "starts": 209,
+    "max_drawdown": -0.431
+   },
+   "vol_brake": {
+    "sma": 50,
+    "window": 20,
+    "enter": 0.22,
+    "exit": 0.18,
+    "weight": 0.5
+   },
+   "macro_gate": true
+  },
+  {
+   "id": "sp500-5x",
+   "product": {
+    "eur_ticker": "5USL.MI",
+    "tax_regime": "non_reporting_pauschal",
+    "isin": "XS2771643025",
+    "name": "WisdomTree S&P 500 5x Daily Leveraged",
+    "ticker": "US5L.DE",
+    "leverage": 5.0
+   },
+   "signal": {
+    "ticker": "^GSPC",
+    "series": "price"
+   },
+   "rule": "C",
+   "sma": 210,
+   "entry": 0.025,
+   "exit": 0.045,
+   "order": "close",
+   "evidence": {
+    "median": 0.198,
+    "bad_case": 0.143,
+    "grid": "fine_base (0-Regel Ref.)",
+    "starts": 215,
+    "max_drawdown": -0.763
+   },
+   "vol_brake": {
+    "sma": 50,
+    "window": 20,
+    "enter": 0.22,
+    "exit": 0.18,
+    "weight": 0.5
+   },
+   "macro_gate": true
   }
  ]
 }

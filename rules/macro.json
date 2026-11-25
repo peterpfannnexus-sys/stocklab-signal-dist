@@ -1,0 +1,17 @@
+{
+ "updated": "2026-11-25",
+ "source": "FRED",
+ "stress_h5": false,
+ "stress_std": true,
+ "indicators": {
+  "houst_3m_yoy": -0.0265,
+  "houst_date": "2026-10-01",
+  "unrate": 4.1,
+  "unemp_gap": -0.167,
+  "unrate_date": "2026-10-01",
+  "indpro_yoy": 0.0166,
+  "indpro_date": "2026-10-01",
+  "cpi_yoy": 0.0391,
+  "cpi_date": "2026-10-01"
+ }
+}
